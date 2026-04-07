@@ -1,0 +1,40 @@
+Dado el circuito de la compuerta NOT se pide que $V_{sp}$ (Inverter Switching Voltage) = $\frac{V_{DD}}{2}$.
+
+Para ello se necesita que se cumpla la condición, asumiendo que ambos se encuentran en saturación:
+\begin{equation}
+    \frac{1}{2} \cdot K_{p_n} \cdot \frac{W_n}{L_n} \cdot (V_{sp} - V_{th_n})^2 = \frac{1}{2} \cdot K_{p_p} \cdot \frac{W_p}{L_p} \cdot (V_{DD} - V_{sp} - |V_{th_p}|)^2
+\end{equation}
+
+Despejando $V_{sp}$ se puede expresar como:
+
+\begin{equation}
+    V_{sp} = \frac{\sqrt {\frac{\beta_n}{\beta_p}}\cdot V_{th_n} + V_{DD} - V_{th_p}}{1+\sqrt{\frac{\beta_n}{\beta_p}}}
+\end{equation}
+
+Donde $\beta_n = \frac{1}{2}K_{p_n} \cdot \frac{W_n}{L_n}$ y $\beta_p = \frac{1}{2}K_{p_p} \cdot \frac{W_p}{L_p}$.
+
+\subsection{Ancho de PMOS - Teórico}
+
+Por ende, considerando que $V_{sp} = \frac{V_{DD}}{2}$ y asumiendo que $V_{th_n} = |V_{th_p}|$ se requiere que:
+
+\begin{equation}
+    K_{p_n}\cdot \frac{W_n}{L_n} = K_{p_p} \cdot \frac{W_p}{L_p}
+\end{equation}
+
+Con las siguientes restricciones:
+\begin{itemize}
+    \item $L_n = 1 \mu m$
+    \item $L_p = 1 \mu m$
+    \item $K_{p_n} = 120 \mu A/V^2$
+    \item $K_{p_p} = 40 \mu A/V^2$
+    \item $W_n = 2 \mu m$
+\end{itemize}
+
+$ W_p = 3\cdot W_n = 6 \mu m $
+
+\subsection{Ancho de PMOS - Simulación}
+
+Se simuló el circuito utilizando el software LTSpice y se obtuvo que el ancho necesario para que $V_{sp} = \frac{V_{DD}}{2}$ es de:
+
+$W_p = 4.83 \mu m$.
+
